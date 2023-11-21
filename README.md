@@ -1,6 +1,6 @@
 ﻿# TvGuide and SlingBox Channel Changer #
 
-Web app with a TV Guide and means to change the channels in your SlingBox devices.
+Web app with a TV Guide and means to change the channels in your SlingBox&trade; devices.
 
 It can work as a TV Guide, as a channel changer or as both, integrated with the [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) or independently of it.
 
@@ -32,15 +32,16 @@ TvGuide integrated with Slinger Player for Android and for Windows
 
 - [Credits](#credits)
 
+- [Disclaimer](#disclaimer)
 
 ## Overview
 
-This app offers a convenient way to view programs info and select channels on your SlingBox(es).<br />
+This app offers a convenient way to view programs info and select channels on your SlingBox&trade; devices.<br />
 Such functionality, also referred as [interactive electronic program guide (IPG)](https://en.wikipedia.org/wiki/Electronic_program_guide) 
-was originally provided by the SlingPlayer app (only for digital channels in USA and Canada) but the [service has been discontinued](https://www.slingbox.com/) as of 9 Nov.2022.<br />
+was originally provided by the SlingPlayer&trade; app (only for digital channels in USA and Canada) but the [service has been discontinued](https://www.slingbox.com/) as of 9 Nov.2022.<br />
 Currently the most complete and robust solution to use SlingBoxes is the [open source project Slinger Server](https://github.com/GerryDazoo/Slinger/tree/main/CustomRemotes) 
 which offers full control over SlingBoxes and provides complex remote controls.<br />
-Therefore this app is not meant to replace but to complement these remote controls with IPG capability.<br />
+Therefore this app is not meant to replace but to complement these remote controls with [IPG](https://en.wikipedia.org/wiki/Electronic_program_guide) capability.<br />
 
 
 Requirements:
@@ -240,10 +241,23 @@ This is a personal project, and I don't have a lot of time to work on it.<br />
 This project is licensed under the MIT License - see the [LICENSE](./Docs/License.md) file for details
 
 # Credits
-- [SlingBox by Sling Media](https://en.wikipedia.org/wiki/Slingbox) - the device that streams TV channels over the Internet
+- [SlingBox by Sling Media](https://en.wikipedia.org/wiki/Slingbox) - the device that streams TV channels over the Internet<br />
+"Slingbox" is a trademarked term associated with products and services provided by Sling Media, 
+a subsidiary of DISH Network Corporation.<br />
+The Slingbox is a line of devices that allow users to remotely view and control their cable 
+or satellite television.<br />
+
+ 
 - [Slinger Server by Gerry Dazoo](https://github.com/GerryDazoo/Slinger) - the server that controls the SlingBoxes, created by Gerry Dazoo
 - [Slinger Player by Gerry Dazoo](https://github.com/GerryDazoo/SlingerPlayer) - the player that displays the video stream from the SlingBoxes, created by Gerry Dazoo
-- [ChatGPT3 by OpenAI](https://chat.openai.com/) - used to generate code, documentation and proofread this Readme file
+
+
+- [ChatGPT3 by OpenAI](https://chat.openai.com/) - used to generate code, documentation and proofreading.
+
 
 - [CloudConvert](https://cloudconvert.com/mp4-to-gif) - used to create animated GIFs from videos.
 - [Draw.io](https://app.diagrams.net/) - used to create diagrams
+
+# Disclaimer
+All trademarks, logos and brand names are the property of their respective owners. All company, product and
+service names used in this website are for identification purposes only.
