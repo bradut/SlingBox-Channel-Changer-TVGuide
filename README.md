@@ -7,10 +7,8 @@ It can work as a TV Guide, as a channel changer or as both, integrated with the 
 
 <p align="center">
 <img src="./Docs/images/demo_mobile_mic_02.gif" alt="TvGuide integrated with Slinger Player for Android" height="450"/>
-&nbsp;&nbsp;&nbsp; 
 <img src="./Docs/images/demo_desktop_mic_021.gif" alt="TvGuide integrated with Slinger Player for Windows" height="450"/><br />
 TvGuide integrated with Slinger Player for Android and for Windows
-
 </p>
 
 
