@@ -81,10 +81,10 @@ that is used to display the video stream.<br />
 Besides Slinger Player, the app can be launched independently in a browser, 
 usually when being used as a remote control for Smart TVs which stream from SlingBoxes via [VLC](https://www.videolan.org/).<br />
 
-
-<img src="./Docs/images/demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450px"/>
-
+<p align="center">
+<img src="./Docs/images/demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450"/><br />
 TV Guide and channel changer used as a standalone webpage for remote controlling Smart TVs
+<\p>
 <br />
 <br />
 
