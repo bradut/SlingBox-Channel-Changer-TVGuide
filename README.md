@@ -1,6 +1,6 @@
 ﻿# TvGuide and SlingBox Channel Changer #
 
-Web app with a TV Guide and means to change the channels in your SlingBox(ese).
+Web app with a TV Guide and means to change the channels in your SlingBox devices.
 
 It can work as a TV Guide, as a channel changer or as both, integrated with the [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) or independently of it.
 
