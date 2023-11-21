@@ -248,8 +248,8 @@ The Slingbox is a line of devices that allow users to remotely view and control 
 or satellite television.<br />
 
  
-- [Slinger Server by Gerry Dazoo](https://github.com/GerryDazoo/Slinger) - the server that controls the SlingBoxes, created by Gerry Dazoo
-- [Slinger Player by Gerry Dazoo](https://github.com/GerryDazoo/SlingerPlayer) - the player that displays the video stream from the SlingBoxes, created by Gerry Dazoo
+- [Slinger Server](https://github.com/GerryDazoo/Slinger) - open source server that controls the SlingBoxes, created by **Gerry Dazoo**
+- [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) - video player that streams from the Slinger, created by **Gerry Dazoo**
 
 
 - [ChatGPT3 by OpenAI](https://chat.openai.com/) - used to generate code, documentation and proofreading.
