@@ -5,15 +5,14 @@ Web app with a TV Guide and means to change the channels in your SlingBox(ese).
 It can work as a TV Guide, as a channel changer or as both, integrated with the [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) or independently of it.
 
 
-&nbsp;&nbsp;&nbsp;
-<img src="Docs\images\demo_mobile_mic_02.gif" alt="TvGuide integrated with Slinger Player for Android" height="450px"/>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-<img src="Docs\images\demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450px"/>
-&nbsp;&nbsp;&nbsp;  
-<img src="Docs\images\demo_desktop_mic_021.gif" alt="TvGuide integrated with Slinger Player for Windows" height="380px"/>
+<p align="center">
+<img src="./Docs/images/demo_mobile_mic_02.gif" alt="TvGuide integrated with Slinger Player for Android" height="450"/>
+&nbsp;&nbsp;&nbsp; 
+<img src="./Docs/images/demo_desktop_mic_021.gif" alt="TvGuide integrated with Slinger Player for Windows" height="450"/><br />
 
-TvGuide integrated with Slinger Player for Android and for Windows, as well as a standalone webpage (for TVs)<br />
+TvGuide integrated with Slinger Player for Android and for Windows
 
+</p>
 
 
 ## Table of Contents
@@ -82,6 +81,11 @@ that is used to display the video stream.<br />
 Besides Slinger Player, the app can be launched independently in a browser, 
 usually when being used as a remote control for Smart TVs which stream from SlingBoxes via [VLC](https://www.videolan.org/).<br />
 
+
+<img src="./Docs/images/demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450px"/>
+
+TV Guide and channel changer used as a standalone webpage for remote controlling Smart TVs
+<br />
 <br />
 
 ## Configuration
