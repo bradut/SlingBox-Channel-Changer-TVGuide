@@ -128,10 +128,10 @@ use the app as a channel changer.
 
 See more details in the [Configuration](./Docs/Configuration.md) file.
 
-Note: when changing the configuration files, you need to restart the app from the menu in order to apply the changes:<br /> 
+Note: when changing the configuration files, you need to **restart the app** from the menu in order to apply the changes:<br /> 
 <p align="center">
 <img src="./Docs/images/refresh_page.jpg" alt="refreshing the page" height=300><br/>
-Refresh the page to apply the changes
+"Refresh page" is restarting the app to apply the changes
 
 </p>
 
@@ -241,7 +241,7 @@ This is a personal project, and I don't have a lot of time to work on it.<br />
 This project is licensed under the MIT License - see the [LICENSE](./Docs/License.md) file for details
 
 # Credits
-- [SlingBox by Sling Media](https://en.wikipedia.org/wiki/Slingbox) - the device that streams TV channels over the Internet<br />
+- [Slingbox by Sling Media](https://en.wikipedia.org/wiki/Slingbox) - the device that streams TV channels over the Internet<br />
 "Slingbox" is a trademarked term associated with products and services provided by Sling Media, 
 a subsidiary of DISH Network Corporation.<br />
 The Slingbox is a line of devices that allow users to remotely view and control their cable 
@@ -259,5 +259,5 @@ or satellite television.<br />
 - [Draw.io](https://app.diagrams.net/) - used to create diagrams
 
 # Disclaimer
-All trademarks, logos and brand names are the property of their respective owners. All company, product and
-service names used in this website are for identification purposes only.
+All trademarks, logos and brand names are the property of their respective owners.<br /> 
+All company, product and service names used in this app and documentation are for identification purposes only.
