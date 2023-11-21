@@ -46,7 +46,7 @@ Therefore this app is not meant to replace but to complement these remote contro
 
 Requirements:
 - a data source that provides information about TV channels and programs
-- a SlingBox Server Wrapper that controls the SlingBoxes.
+- a Slinger Server Wrapper that controls the SlingBoxes.
 
 These three components (TvGuide Web App, TvGuide Data Source and the SlingBox Server) 
 can be located in the same machine or in different machines: in the same network or across the Internet.
@@ -73,7 +73,7 @@ As a **channel changer**, the data source can be:
 - a WebAPI service with channels and programs data,
 - static JSON files with channels data and (empty) programs data.
 
-It must have access my [SlingBox Server Wrapper](#) which, in turn, talks to Gerry Dazoo's [Slinger Server](https://github.com/GerryDazoo/Slinger)
+It must have access my [Slinger Server Wrapper](#) which, in turn, talks to Gerry Dazoo's [Slinger Server](https://github.com/GerryDazoo/Slinger)
 which controls the SlingBoxes.<br />
 It may be integrated with the [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) app 
 that is used to display the video stream.<br />
@@ -137,7 +137,7 @@ Refresh the page to apply the changes
 
 ## Functionality
 The app reads TV Guide info from data source via the URLs indicated in the configuration file.<br />
-When its URL contains certain parameters which indicate the presence of SlingBox server Wrapper, 
+When its URL contains certain parameters which indicate the presence of Slinger Server Wrapper, 
 the app will use them to change the channels in the SlingBox(es).<br />
 
 
@@ -165,7 +165,7 @@ See more details in the [DataSource](./Docs/DataSource.md) file.
 
 ### SlingBox channel changer functionality
 
-Channel changer functionality is provided by the SlingBox Server Wrapper:<br />
+Channel changer functionality is provided by the Slinger Server Wrapper:<br />
 1. The Server pushes notifications to this app about the following streaming events of the SlingBoxes
    - `streaming in progress` 
    - `streaming stopped` 
@@ -177,12 +177,12 @@ Channel changer functionality is provided by the SlingBox Server Wrapper:<br />
 
 To use the app as a channel changer, its URL needs two additional parameters:
 1. the Slinger Server URL.
-2. the SlingBox Server Wrapper URL. 
+2. the Slinger Server Wrapper URL. 
 
-**What are the Slinger Server and the SlingBox Server Wrapper?**<br />
+**What are the Slinger Server and the Slinger Server Wrapper?**<br />
 - The **Slinger Server**, as mentioned already, is the server that controls the SlingBoxes. 
   It is created by Gerry Dazoo and is available on GitHub at the address indicated above.<br />
-- The **SlingBox Server Wrapper** is a bridge between the Slinger Server and the web page of the TvGuide app.<br />
+- The **Slinger Server Wrapper** is a bridge between the Slinger Server and the web page of the TvGuide app.<br />
   It "wraps" the Slinger Server and provides
   - a REST API to it:
     - to send to the Slinger Server the channel change commands received from TV Guide app 
@@ -207,7 +207,7 @@ The Wrapper server notifies the web page whenever a SlingBox status changes.<br 
  - If the SlingBox stops streaming, the Wrapper server should send a `streaming stopped` notification 
 to the web page, which, in turn, will display the channel numbers as inactive buttons.<br />
 
-When the user clicks on a channel number, the web page will send a channel change command to the SlingBox Server Wrapper.<br />
+When the user clicks on a channel number, the web page will send a channel change command to the Slinger Server Wrapper.<br />
 
 # Getting Started
 1. Create a website (IIS, Apache, etc.) on a web server and copy there the files from this GitHub repo.<br />
@@ -217,8 +217,8 @@ When the user clicks on a channel number, the web page will send a channel chang
 2. Configure the app by modifying the files in the `config\` sub-directory.<br />
    See more details above in the [Configuration](#how-is-the-app-using-the-configuration-files) paragraph.
 
-3. Configure the SlingBox Server Wrapper.<br />
-   See more details in its GitHub repo [SlingBox Server Wrapper](#).
+3. Configure the Slinger Server Wrapper.<br />
+   See more details in its GitHub repo [Slinger Server Wrapper](#).
 
 4. Launch the app: 
    - directly in a browser by using its URL.<br />
