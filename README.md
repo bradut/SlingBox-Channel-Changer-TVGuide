@@ -143,10 +143,10 @@ the app will use them to change the channels in the SlingBox(es).<br />
 
 ### TV Guide functionality
 
-The app, upon launch, will read the data from the data source and will cache some of it.<br />
+The app, upon launch, will read TV info from its data source and will cache some of it.<br />
 The TV Guide data source must provide the following information:
 
-* **1.1. Date & Time at the TV Station location**<br />
+* **1.1. Local Date & Time of the TV Station**<br />
   Utilized to display the TV programs adjusted to the local time of the device which browse the TV Guide.<br />
 
 
