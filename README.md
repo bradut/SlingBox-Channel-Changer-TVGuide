@@ -90,9 +90,9 @@ TV Guide and channel changer used as a standalone webpage for remote controlling
 ## Configuration
 Configure the app by modifying the files in the `config\` sub-directory.<br />
 
-   - Indicate the environment type in the file `config\environment.json`.<br />
-   Configure the data source by indicating the environment type (`development`, `production`, etc.) in the file `config\environment.json`.<br />
-In the following example, the environment is `mockdata_1_sling`:
+-   Indicate the environment type (`development`, `production`, etc.) in the file `config\environment.json`.<br />
+-   As a result the app will set its data source for that environment type.<br />
+For example, here is how we set the environment type as `mockdata_1_sling`:
 ```json
  {
    "environment": "mockdata_1_sling",
@@ -100,8 +100,8 @@ In the following example, the environment is `mockdata_1_sling`:
   }
  ```
 In the example above where the environment is `mockdata_1_slings`, the webpage
-will read the default settings in the file `config\appsettings.json`,
-and then the the URLs to the data source from file `config\appsettings.mockdata_1_slings.json`.<br />
+will first read the default settings from file `config\appsettings.json`,
+and then the URLs to the data source from file `config\appsettings.mockdata_1_slings.json`.<br />
 
 (See the explanations in the [Configuration](./Docs/Configuration.md) file.)
 
