@@ -102,7 +102,7 @@ Here is an example of a channel with 3 slingBoxes:
 ```
 
 <p align="center">
-<img src="images\demo_mobile_3_slingboxes.jpg" alt="3 slingBoxes" height=350px><br>
+<img src="./images/demo_mobile_3_slingboxes.jpg" alt="Controlling three SlingBoxes" height=350 /><br>
 Three SlingBoxes / channel
 </p>
 
@@ -154,7 +154,7 @@ Three SlingBoxes / channel
 The date-time of the TV programs corresponds to the local time of the TV Station.<br />
 The app will adjust the date-time of the TV programs to the local time of the device which browses the TV Guide.<br />
 
-
+Please note that, in order to display the channel logos, you will need to provide the images of the TV Channel logos and store them into the directory `\Channel Logo` in the website with the same name indicated in the channel json data.<br />
 
 
 [Back to Readme](../README.md#tv-guide-functionality)
