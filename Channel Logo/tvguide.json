@@ -1,0 +1,104 @@
+{
+    "date": "2020-09-30",
+    "channels": [
+        {
+            "id": "tvr1",
+            "programs": [
+                {
+                    "time": "00:25",
+                    "name": "abcd0"
+                },
+                {
+                    "time": "01:00",
+                    "name": "abcd1"
+                },
+                {
+                    "time": "02:00",
+                    "name": "abcd2"
+                },
+                {
+                    "time": "03:00",
+                    "name": "abcd3"
+                },
+                {
+                    "time": "04:00",
+                    "name": "abcd4"
+                },
+                {
+                    "time": "05:00",
+                    "name": "abcd5"
+                },
+                {
+                    "time": "06:00",
+                    "name": "abcd6"
+                }
+            ]
+        },
+        {
+            "id": "tvr2",
+            "programs": [
+                {
+                    "time": "00:45",
+                    "name": "bbbb0"
+                },
+                {
+                    "time": "01:30",
+                    "name": "bbbb1"
+                },
+                {
+                    "time": "02:30",
+                    "name": "bbbb2"
+                },
+                {
+                    "time": "03:30",
+                    "name": "bbbb3"
+                },
+                {
+                    "time": "04:30",
+                    "name": "bbbb4"
+                },
+                {
+                    "time": "05:30",
+                    "name": "bbbb5"
+                },
+                {
+                    "time": "06:30",
+                    "name": "bbbb6"
+                }
+            ]
+        },
+        {
+            "id": "tvr3",
+            "programs": [
+                {
+                    "time": "00:15",
+                    "name": "cccc0"
+                },
+                {
+                    "time": "00:55",
+                    "name": "cccc1"
+                },
+                {
+                    "time": "02:00",
+                    "name": "cccc2"
+                },
+                {
+                    "time": "03:45",
+                    "name": "cccc3"
+                },
+                {
+                    "time": "03:50",
+                    "name": "cccc4"
+                },
+                {
+                    "time": "05:10",
+                    "name": "cccc5"
+                },
+                {
+                    "time": "06:40",
+                    "name": "cccc6"
+                }
+            ]
+        }
+    ]
+}

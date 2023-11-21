@@ -1,0 +1,33 @@
+<style>
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+        direction: rtl;
+    }
+    
+    .button-child {
+        direction: ltr;
+    }
+</style>
+
+<div id="@id" class="row align-items-center text-center">
+    <img src="" alt="@alt" class="col-md-1 col-sm-1 col-2 col-xs-1 img-fluid img-thumbnail">
+    <div class="col-md-4 col-sm-4 col-4 col-xs-4 text-left" data-channel-name="@name">
+        <span style="font-weight: bold;">>@name</span>
+        <br/>
+        <div class="button-container align-items-right flex-sm-row-reverse">
+            <!--
+                    <div class="col-md-2 col-sm-3 col-3 col-xs-3 div-channel-number" data-slingbox-name="A">
+                        <span class="span-channel-number" style="color:red">@numberA</span>
+                    </div>
+            -->
+        </div>
+    </div>
+
+    <!-- Pop-up to display programs for the next ~26 hours. Requires: data-toggle="modal" data-target="#displayProgramsModal" -->
+    <div class="col-md-7 col-sm-7 col-6 col-xs-8 d-xs-block text-left p-1" data-toggle="modal" data-target="#displayProgramsModal">
+        <div class="table-responsive p-0">
+        </div>
+    </div>
+
+</div>

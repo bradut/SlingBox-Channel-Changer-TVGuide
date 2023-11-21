@@ -1,0 +1,21 @@
+body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-image: url('../images/pattern.png');
+    background-repeat: repeat;
+}
+
+/* extend the BootStrap jumbotron class */
+.jumbotron {
+    /* jumbotron height will always be 40% of the vertical height of the window
+      vh = variable height*/
+    height: 40vh;
+ 
+    background-size: cover;
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+  

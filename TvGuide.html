@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html lang="ro">
+
+<head>
+    <title>TV Guide</title>
+
+    <!-- https://www.favicon-generator.org/ -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-icon-180x180.png">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="./images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon/favicon-16x16.png">
+
+    <link rel="manifest" href="./images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    <!--  Prevent most search engine web crawlers from indexing a page on this site-->
+    <meta name="robots" content="noindex">
+
+    <meta name="color-scheme" content="light only">
+
+    <!--  Prevent browsers from caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/tvstyle.css?id=2021-11-19_2222">
+
+    <!--    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+    <script src="js/signalr/signalr.min.js"></script>
+    <script src="js/jquery/jquery-3.5.1.min.js?id=2023-07-07_1728"></script>
+
+    <script src="js/tvguide.js?id=2023-10-16_2300"></script>
+
+    <style>
+        #divPageTitle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="ajaxLoader"
+     style="visibility: visible; position: absolute; 
+            top: 25%;
+            display: flex;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            ">
+
+    <img alt="downloading" src="images/ajax-loader1.gif"
+         style="margin-left: auto;
+                margin-right: auto;
+                width: 50px;"/>
+</div>
+
+
+<header></header>
+
+<div id="menuButton" class="icon" onclick="toggleMenu()">&#9776;</div>
+<div class="menu" id="menu">
+    <a href="#" id="btnResetCache" title="Empty Cache and Local Storage">Refresh Page</a>
+    <hr class="menu-divider">
+    <a href="#" onclick="toggleAbout()">About</a>
+</div>
+
+<div class="explanation" id="aboutDiv" style="display: none;">
+    <h5>TV Guide and SlingBox channel selector.</h5>
+    <span style="padding-bottom: 1px;">Version: <span id="tvGuideVersion"></span></span>
+
+    <hr class="menu-divider">
+
+    <div style="text-align: left; top:1px;">
+
+
+        <span style="font-weight:bold">Description:</span><br/>
+        Shows a TV Guide with channel-changing capabilities for SlingBox devices.<br/>
+        <hr class="menu-divider">
+        <span style="font-weight:bold">Copyright:</span><span> Bradut Dima, 2023 - under the MIT License</span>
+
+        <div style="margin-top: 5px">
+            <span style="font-weight:bold;">Source Code:</span>
+            <span style="margin-left:5px"><a href="https://github.com/bradut" target="_blank">GitHub</a></span>
+        </div>
+        <hr class="menu-divider">
+
+        <div style="margin-bottom: 3px">
+            <span style="font-weight:bold">Trademark Disclaimer</span>
+        </div>
+        <div style="font-size: small">
+            All trademarks, logos and brand names are the property of their respective owners. All company, product and
+            service names used in this website are for identification purposes only.
+        </div>
+    </div>
+    <button style="border-radius: 5px;" onclick="toggleAbout()">Close</button>
+</div>
+
+
+<div class="jumbotron jumbotron-detail-apple-pie jumbotron-detail-mira-tv jumbotron-detail-some_picture ">
+    <!-- to align the title with the rest of the page which is included into a container, 
+    include this h1 class into a container as well  -->
+    <div id="divPageTitle" class="container text-center">
+
+    </div>
+</div>
+
+<!--local time-->
+<div id="deviceTime" style="float: right; margin-right: 5px;margin-top: -25px;"></div>
+<div id="divMessage" style="float: left; margin-left: 5px;margin-top: -25px;">...</div>
+
+<div id="tvGuide" class="container-fluid grid-striped"></div>
+
+<script id="mainScript">
+
+    /* *************************************************************************************
+    * Store the SignalR connection status and notifies all listeners when it changes
+    * Useful for components that need to know when the server is connected or disconnected
+    * *************************************************************************************/
+    class ObservableSignalRConnection {
+        constructor(initialValue) {
+            this._value = initialValue;
+            this._listeners = [];
+            this._oldValue = null;
+        }
+
+        get value() {
+            return this._value;
+        }
+
+        get oldValue() {
+            return this._oldValue;
+        }
+
+        updateOldWithNewValue() {
+            this._oldValue = this._value;
+        }
+
+        set value(newValue) {
+            if (this._value === newValue) {
+                return;
+            }
+
+            // ignore "Connecting" state
+            if (!isSignalRConnectionConnected(newValue)) {
+                newValue = null;
+            }
+
+            if (newValue instanceof signalR.HubConnection && this._oldValue instanceof signalR.HubConnection) {
+                if (newValue.state === this._value.state) {
+                    return;
+                }
+            }
+
+            this._value = newValue;
+
+            // notify all listeners
+            try {
+                this._listeners.forEach(listener => listener(newValue));
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        subscribe(listener) {
+            this._listeners.push(listener);
+        }
+    }
+
+
+    // This is the FASTEST: it displays the modified buttons before the TV programs finish loading
+    window.onload = function () {
+        // Queue the function for the next available frame
+        requestAnimationFrame(doAfterWindowLoads);
+    };
+
+    //loadConfiguration();
+
+    let loadPageIntervalId = setInterval(loadPage, 5000);
+    let signalRIntervalId = setInterval(initializeSignalRConnection, 5000);
+
+    let isSlowRefresh = false;
+    let isAjaxLoaderVisible = true;
+
+    let signalRConnection = null;
+    let observableConnection = new ObservableSignalRConnection(signalRConnection);
+
+    observableConnection.subscribe(handleSignalRConnectionChange);
+
+    initializeSignalRConnection();
+
+    const loadPageRefreshTimeOutMs = Configuration.webPageRefreshRates.loadPageTimeOutMs;
+    const checkSignalRConnectionTimeoutMs = Configuration.webPageRefreshRates.checkSignalRConnectionTimeoutMs;
+
+
+    function isSignalRConnectionConnected(signalRConnection) {
+        return !Utils.isNullOrUndefined(signalRConnection) &&
+            signalRConnection instanceof signalR.HubConnection &&
+            signalRConnection.state === "Connected"
+    }
+
+    function handleSignalRConnectionChange(newConnection) {
+        console.log(`${TimeService.timeStamp} SignalR Connection changed`);
+
+        // Connection changed: server has disconnected and before it was connected
+        if (newConnection === null && observableConnection.oldValue instanceof signalR.HubConnection) {
+            console.log(`${TimeService.timeStamp} SignalR Connection status: disconnected`);
+            observableConnection.updateOldWithNewValue();
+
+            SlingServices.displayDivChannelNumbersAsButtonsAsync();
+
+            return;
+        }
+
+        // Connection changed: server has connected and before it was not connected
+        if (observableConnection.oldValue === null) {
+            console.log(`${TimeService.timeStamp} SignalR Connection status: connected`);
+            observableConnection.updateOldWithNewValue()
+
+            SlingServices.displayDivChannelNumbersAsButtonsAsync();
+            reduceSignalRRefreshRate();
+            SlingServices.resetSignalRErrorCount();
+        }
+    }
+
+    function hideAjaxLoader() {
+        if (!isAjaxLoaderVisible)
+            return;
+
+        const ajaxLoaderElement = document.getElementById('ajaxLoader');
+        if (ajaxLoaderElement) {
+            ajaxLoaderElement.style.visibility = "hidden";
+            ajaxLoaderElement.style.display = "none";
+            isAjaxLoaderVisible = false;
+        }
+    }
+
+    function loadPage() {
+        console.log(`${TimeService.timeStamp} loadPage()`);
+        document.getElementById("deviceTime").innerHTML = TimeService.getDeviceDateTimeFormatted("dd MMM yyyy  HH:mm");
+
+        if (!Configuration.isConfigurationLoaded) {
+            console.info(`${TimeService.timeStamp} Configuration is not loaded yet. loadPage() aborted.`);
+            return;
+        }
+
+        const deviceDateTime = TimeService.getDeviceDateTime();
+        const programsStartTime = TimeService.incrementDateTime(deviceDateTime, -2); // display TV programs started 2 hours ago
+
+        const tvGuide = DataServices.createTvGuide(programsStartTime);
+
+        const channelsUiCollection = DataServices.getTvChannelUiCollectionAsJson();
+        const htmlServices = new HtmlServices();
+        htmlServices.createChannelRowsIfNeeded(channelsUiCollection);
+        let hasTvPrograms = htmlServices.populateChannelRowsWithTvPrograms(tvGuide, deviceDateTime);
+
+        // Reduce refresh rate once we've started displaying data
+        if (hasTvPrograms && !isSlowRefresh) {
+            clearInterval(loadPageIntervalId);
+            setInterval(loadPage, loadPageRefreshTimeOutMs);
+
+            isSlowRefresh = true;
+            hideAjaxLoader();
+        }
+    }
+
+    function loadConfiguration() {
+        console.log(`${TimeService.timeStamp} Configuration.setUp(): Started in page`);
+        Configuration.setUp().then(() => {
+            if (Configuration.debug) console.log(`${TimeService.timeStamp} Configuration.setUp(): Completed in page`);
+            populatePageTitle();
+            //loadPage();
+        }).catch((error) => {
+            console.error(`${TimeService.timeStamp} Configuration.setUp() failed,
+        error: ${error}`);
+        });
+    }
+
+    function populatePageTitle() {
+        const divPageTitle = document.getElementById("divPageTitle");
+        const templateNameUrl = HtmlUtils.appendTimeStampToUrl(Configuration.pageTitleTemplateUrl);
+        if (Utils.isNullOrUndefined(templateNameUrl)) {
+            console.error(`${TimeService.timeStamp} Configuration.pageTitleTemplateUrl is null or undefined.`);
+            return;
+        }
+
+        const localStorageKey = "pageTitleTemplate_key";
+        const localStorageExpirationMs = 1000 * 60 * 60 * 24 * 7; // 7 days
+        const pageTitleTemplate = LocalStorageServices.getDataFromLocalStorage(localStorageKey);
+        if (pageTitleTemplate) {
+            divPageTitle.innerHTML = pageTitleTemplate;
+            if (Configuration.debug) console.log(`${TimeService.timeStamp} Page title template loaded from local storage.`);
+
+            return;
+        }
+
+        fetch(templateNameUrl)
+            .then(function (response) {
+                // Throw an error if the fetch encountered any issues, force the promise to reject
+                if (!response.ok) {
+                    console.error(`${TimeService.timeStamp} Could not read template file: ${templateNameUrl}`);
+                    HtmlServices.displayMessage("Error reading title", HtmlServices.messageTypeError);
+
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // convert the response body into a text string
+                // the subsequent .then in the promise chain will receive the response body as text.
+                return response.text();
+            })
+            .then(function (htmlString) {
+                // This is the HTML from our response as a text string
+                divPageTitle.innerHTML = HtmlUtils.removeComments(htmlString);
+
+                if (Configuration.debug) console.log(`${TimeService.timeStamp} Page title template loaded from the config file.`);
+
+                LocalStorageServices.saveDataToLocalStorage(localStorageKey, divPageTitle.innerHTML, localStorageExpirationMs);
+            })
+            .catch(function (err) {
+                console.error(`${TimeService.timeStamp} Could not read template file: ${templateNameUrl}`, err);
+            });
+
+    }
+
+    function doAfterWindowLoads() {
+        /*
+         The "requestAnimationFrame" API allows running a function in the background to apply transformations 
+         without introducing arbitrary delays or affecting the page's responsiveness.
+        */
+        requestAnimationFrame(async function () {
+            loadConfiguration();
+            HtmlServices.displayMessage("Version: " + Configuration.tvGuideVersion);
+        });
+    }
+
+
+    // reduce refresh rate once we've started displaying data
+    function reduceSignalRRefreshRate() {
+        if (isSignalRConnectionConnected(observableConnection.value)) {
+            clearInterval(signalRIntervalId);
+            setInterval(initializeSignalRConnection, checkSignalRConnectionTimeoutMs);
+        }
+    }
+
+    function initializeSignalRConnection() {
+
+        if (!Configuration.isConfigurationLoaded) {
+            console.log(`${TimeService.timeStamp} Configuration is not loaded yet. initializeSignalRConnection() aborted.`);
+            return;
+        }
+
+        if (!Configuration.isPageLaunchedFromSlingBoxServer) {
+            console.error(`${TimeService.timeStamp} Page is not launched from SlingBox Server. SignalR connection not initialized.`)
+            return;
+        }
+
+        if (SlingServices.cannotConnectToSignalR()) {
+            console.error(`${TimeService.timeStamp} SignalR connection error count reached ${SlingServices.maxSignalRErrorCount}. SignalR connection not initialized.`);
+            return;
+        }
+
+        const connection = SlingServices.initializeSignalRConnection();
+
+        if (isSignalRConnectionConnected(connection)) {
+            observableConnection.value = connection;
+            //return connection;
+        } else {
+            observableConnection.value = null;
+            //return null;
+        }
+    }
+
+    function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleAbout() {
+        const aboutDiv = document.getElementById('aboutDiv');
+        aboutDiv.style.display = aboutDiv.style.display === 'block' ? 'none' : 'block';
+    }
+
+
+    // Close the menu when clicking anywhere on the page
+    document.body.addEventListener('click', (event) => {
+
+        // Get references to your button and menu
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.querySelector('.menu');
+        const aboutDiv = document.getElementById('aboutDiv');
+
+        // Check if the click event target is not the menu button or the menu itself
+        if (event.target !== menuButton && !menu.contains(event.target)) {
+            const menu = document.querySelector('.menu');
+            menu.style.display = 'none'; // Close the menu
+            aboutDiv.style.display = 'none'; // Close the about div
+        }
+    });
+
+    function closeMenu() {
+        const menu = document.querySelector('.menu');
+        menu.style.display = 'none';
+    }
+
+    function populateAboutWithAppVersion() {
+        const tvGuideVersion = document.getElementById('tvGuideVersion');
+        tvGuideVersion.innerHTML = Configuration.tvGuideVersion;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // This function will execute when the DOM is fully loaded
+        populateAboutWithAppVersion();
+    });
+
+    document.getElementById("btnResetCache").addEventListener("click", function (e) {
+        e.preventDefault(); // Prevent the default behavior of the link
+        Utils.clearLocalStorageAndRefreshPage();
+        HtmlServices.displayMessage("Local storage has been reset.", HtmlServices.messageTypeWarning);
+        closeMenu();
+    });
+</script>
+
+
+<!-- The slim version of jquery doesn't have AJAX -->
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
+<script src="js/bootstrap.js"></script>
+
+
+<!-- modal dialog -->
+<div id="displayProgramsModal" class="modal fade" tabindex="-1" role="dialog">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Some Title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- <p>Some text here</p> -->
+                <div id="divDateTimeModal" class="h6" style="text-align: right;">1 Sept.2020 15:40:05</div>
+                <div id="divTvProgramModal"></div>
+            </div>
+
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary btn-lg p-0"
+                        data-dismiss="modal">
+                    &nbsp;&nbsp;OK&nbsp;&nbsp;
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // handle the modal popup
+    $('#displayProgramsModal')
+        .on('show.bs.modal', HtmlServices.populateModalPopup)
+        .on('hide.bs.modal', HtmlServices.disposeModalPopup);
+
+</script>
+
+</body>
+
+</html>

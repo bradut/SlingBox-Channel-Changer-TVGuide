@@ -1,0 +1,135 @@
+{
+  "date": "2020-09-30",
+  "channels": [
+    {
+      "id": "discovery",
+      "logo": "discovery.png",
+      "name": "Discovery",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "700",
+          "quality": "true"
+        }
+      ],
+      "channelType": "science"
+    },
+    {
+      "id": "history_w",
+      "logo": "history_w.jpg",
+      "name": "History w",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "704",
+          "quality": "true"
+        }
+      ],
+      "channelType": "history"
+    },
+    {
+      "id": "smithsonian",
+      "logo": "smithsonian.png",
+      "name": "Smithsonian Channel",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "715",
+          "quality": "true"
+        }
+      ],
+      "channelType": "science"
+    },
+    {
+      "id": "bbc-earth",
+      "logo": "bbc-earth.jpg",
+      "name": "BBC Earth",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "725",
+          "quality": "true"
+        }
+      ],
+      "channelType": "science"
+    },
+    {
+      "id": "cbc-news",
+      "logo": "cbc-news.png",
+      "name": "CBS News",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "800",
+          "quality": "true"
+        }
+      ],
+      "channelType": "news"
+    },
+    {
+      "id": "ctv-news",
+      "logo": "ctv-news.png",
+      "name": "CTV News",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "801",
+          "quality": "true"
+        }
+      ],
+      "channelType": "news"
+    },
+    {
+      "id": "bbc-news",
+      "logo": "bbc-news.png",
+      "name": "BBC News",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "821",
+          "quality": "true"
+        }
+      ],
+      "channelType": "news"
+    },
+    {
+      "id": "al_jazeera",
+      "logo": "al_jazeera.png",
+      "name": "Al Jazeera",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "825",
+          "quality": "true"
+        }
+      ],
+      "channelType": "news"
+    },
+    {
+      "id": "euronews",
+      "logo": "euronews.png",
+      "name": "Euronews",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "831",
+          "quality": "true"
+        }
+      ],
+      "channelType": "news"
+    },
+    {
+      "id": "stingray_baroque",
+      "logo": "stingray.png",
+      "name": "Stingray Baroque",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "7852",
+          "quality": "true"
+        }
+      ],
+      "channelType": "music"
+    }
+  ]
+}

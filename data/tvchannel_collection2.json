@@ -1,0 +1,113 @@
+{
+  "date": "2020-09-30",
+  "channels": [
+    {
+      "id": "tvr-1",
+      "logo": "TVR 1.jpg",
+      "name": "TVR 1 National News",
+      "attributes": [
+        {
+          "slingName": "mihai",
+          "number": "0",
+          "quality": "true"
+        },
+        {
+          "slingName": "aura",
+          "number": "0",
+          "quality": "true"
+        }
+      ],
+      "channelType": "stiri"
+    },
+    {
+      "id": "tvr-2",
+      "logo": "TVR 2.jpg",
+      "name": "TVR 2",
+      "attributes": [
+        {
+          "slingName": "mihai",
+          "number": "1",
+          "quality": "true"
+        },
+        {
+          "slingName": "aura",
+          "number": "1",
+          "quality": "true"
+        }
+      ],
+      "channelType": "stiri"
+    },
+    {
+      "id": "tvr-3",
+      "logo": "TVR 3.jpg",
+      "name": "TVR 3",
+      "attributes": [
+        {
+          "slingName": "mihai",
+          "number": "2",
+          "quality": "true"
+        },
+        {
+          "slingName": "aura",
+          "number": "2",
+          "quality": "false"
+        }
+      ],
+      "channelType": "stiri"
+    },
+    {
+      "id": "antena-1",
+      "logo": "Antena 1.jpg",
+      "name": "Antena 1",
+      "attributes": [
+        {
+          "slingName": "mihai",
+          "number": "12",
+          "quality": "true"
+        },
+        {
+          "slingName": "aura",
+          "number": "4",
+          "quality": "true"
+        }
+      ],
+      "channelType": "stiri"
+    },
+    {
+      "id": "pro-tv",
+      "logo": "ProTV.jpg",
+      "name": "ProTV",
+      "attributes": [
+        {
+          "slingName": "mihai",
+          "number": "11",
+          "quality": "true"
+        },
+        {
+          "slingName": "aura",
+          "number": "3",
+          "quality": "true"
+        }
+      ],
+      "channelType": "stiri"
+    },
+    {
+      "id": "tvr-iasi",
+      "logo": "TVR Iasi.jpg",
+      "name": "TVR Iasi",
+      "attributes": [
+        {
+          "slingName": "mihai",
+          "number": "5",
+          "quality": "true"
+        },
+        {
+          "slingName": "aura",
+          "number": "",
+          "quality": "true"
+        }
+      ],
+      "channelType": "stiri"
+    }
+  ]
+}

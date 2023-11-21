@@ -1,0 +1,4 @@
+{
+  "environment": "development",
+  "_suggested_values": "development, mockdata_3_slings, mockdata_2_slings, mockdata_1_sling, mockdata_0_slings, mock_CA_BC_TLS, staging, production"
+}
