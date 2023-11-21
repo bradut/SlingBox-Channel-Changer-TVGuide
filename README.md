@@ -84,7 +84,7 @@ usually when being used as a remote control for Smart TVs which stream from Slin
 <p align="center">
 <img src="./Docs/images/demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450"/><br />
 TV Guide and channel changer used as a standalone webpage for remote controlling Smart TVs
-<\p>
+</p>
 <br />
 <br />
 
