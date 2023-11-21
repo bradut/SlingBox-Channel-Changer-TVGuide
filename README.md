@@ -5,9 +5,9 @@ Web app with a TV Guide and means to change the channels in your SlingBox(ese).
 It can work as a TV Guide, as a channel changer or as both, integrated with the [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) or independently of it.
 
 
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
 <img src="Docs\images\demo_mobile_mic_02.gif" alt="TvGuide integrated with Slinger Player for Android" height="450px"/>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 <img src="Docs\images\demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450px"/>
 &nbsp;&nbsp;&nbsp;  
 <img src="Docs\images\demo_desktop_mic_021.gif" alt="TvGuide integrated with Slinger Player for Windows" height="380px"/>
