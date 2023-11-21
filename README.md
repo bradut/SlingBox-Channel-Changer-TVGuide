@@ -15,23 +15,16 @@ TvGuide integrated with Slinger Player for Android and for Windows
 ## Table of Contents
 
 - [Overview](#overview)
-    - [TV Guide](#tv-guide)
-    - [SlingBox channel changer](#slingbox-channel-changer)
-  
-- [Configuration](#configuration)
-  
-- [Functionality](#functionality)
-    - [TV Guide functionality](#tv-guide-functionality)
-    - [SlingBox channel changer functionality](#slingbox-channel-changer-functionality)
-
+    * [TV Guide](#tv-guide)
+    * [SlingBox channel changer](#slingbox-channel-changer)
+ - [Configuration](#configuration)
+ - [Functionality](#functionality)
+   * [TV Guide functionality](#tv-guide-functionality)
+   * [SlingBox channel changer functionality](#slingbox-channel-changer-functionality)
 - [Getting Started](#getting-started)
-
 - [Contributing](#contributing)
-
 - [License](#license)
-
 - [Credits](#credits)
-
 - [Disclaimer](#disclaimer)
 
 ## Overview
