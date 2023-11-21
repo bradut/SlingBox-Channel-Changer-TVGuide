@@ -9,7 +9,6 @@ It can work as a TV Guide, as a channel changer or as both, integrated with the 
 <img src="./Docs/images/demo_mobile_mic_02.gif" alt="TvGuide integrated with Slinger Player for Android" height="450"/>
 &nbsp;&nbsp;&nbsp; 
 <img src="./Docs/images/demo_desktop_mic_021.gif" alt="TvGuide integrated with Slinger Player for Windows" height="450"/><br />
-
 TvGuide integrated with Slinger Player for Android and for Windows
 
 </p>
@@ -53,9 +52,10 @@ Requirements:
 These three components (TvGuide Web App, TvGuide Data Source and the SlingBox Server) 
 can be located in the same machine or in different machines: in the same network or across the Internet.
 
-<p style="text-align: center;">
-<img src="./Docs/images/Diagram - TvGuideWebPage - only.jpg" alt="TvGuide Overview" height="229">
-<br />System Architecture - TvGuide Web App, TvGuide Data Source and SlingBox Server
+[//]: # (<p style="text-align: center;">)
+<p align="center">
+<img src="./Docs/images/Diagram - TvGuideWebPage - only.jpg" alt="TvGuide Overview" height="229"><br />
+System Architecture - TvGuide Web App, TvGuide Data Source and SlingBox Server
 </p>
 
 <br />
@@ -118,7 +118,7 @@ IMPORTANT: To use these mock data sources to change channels, you have to modify
 to match the names of your SlingBoxes declared in the Slinger project on your computer, in the file `config.ini` or `unified_config.ini`.<br />
 (The SlingBox names in the config.ini can be different from the names of the SlingBox devices).<br />
 
-<p style="text-align: center;">
+<p align="center">
 <img src="./Docs/images/demo_mobile_telus.jpeg" alt="static data" height=500><br>
 Using static data to enable channel changing (no program info available)
 </p>
@@ -130,7 +130,7 @@ use the app as a channel changer.
 See more details in the [Configuration](./Docs/Configuration.md) file.
 
 Note: when changing the configuration files, you need to restart the app from the menu in order to apply the changes:<br /> 
-<p style="text-align: center;">
+<p align="center">
 <img src="./Docs/images/refresh_page.jpg" alt="refreshing the page" height=300><br/>
 Refresh the page to apply the changes
 
