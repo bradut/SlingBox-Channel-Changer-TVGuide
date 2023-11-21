@@ -1,6 +1,6 @@
-﻿[Back to Readme](../Readme.md#how-is-the-app-getting-data)
+﻿[Back to Readme](../README.md#tv-guide-functionality)
 
-## Reading TV info from Data Source #
+## TV Guide functionality: Reading TV info from Data Source #
 
 #### 1. Reading from Data Source [TV Guide functionality]
 
@@ -157,4 +157,4 @@ The app will adjust the date-time of the TV programs to the local time of the de
 
 
 
-[Back to Readme](../Readme.md#how-is-the-app-getting-data)
+[Back to Readme](../README.md#tv-guide-functionality)

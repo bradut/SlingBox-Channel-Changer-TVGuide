@@ -1,6 +1,6 @@
-﻿[Back to Readme](../Readme.md#how-is-the-app-getting-data)
+﻿[Back to Readme](../README.md#slingbox-channel-changer-functionality)
 
-## Receiving Data From Server [SlingBox channel changer functionality]
+## Receiving Data From Server: SlingBox channel changer functionality
 
 To use the app as a channel changer, its URL needs two additional parameters:
 1. the Slinger Server URL.
@@ -24,4 +24,4 @@ It will do this by establishing a SignalR connection with the SlingBox Server Wr
 Reminder: You need to ensure **exact match** between the slingBox name in the data source and the slingBox name in the Slinger Server.<br />
 
 
-[Back to Readme](../Readme.md#how-is-the-app-getting-data)
+[Back to Readme](../README.md#slingbox-channel-changer-functionality)

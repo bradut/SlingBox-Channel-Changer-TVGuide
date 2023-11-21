@@ -1,4 +1,4 @@
-﻿[Back to Readme](../Readme.md#license)
+﻿[Back to Readme](../README.md#license)
 ## MIT License
 
 Copyright (c) 2023 Bradut Dima
@@ -21,4 +21,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[Back to Readme](../Readme.md#license)
+[Back to Readme](../README.md#license)

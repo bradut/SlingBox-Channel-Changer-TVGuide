@@ -1,4 +1,4 @@
-[Back to Readme](../Readme.md#how-is-the-app-using-the-configuration-files)
+[Back to Readme](../README.md#configuration)
 
 # Configuration 
 
@@ -92,4 +92,4 @@ but in the file `config\appsettings.mockdata_1_slings.json` it is set to `true` 
           Note that this value overrides the value in the default configuration file and is higher because
           we are using mock data which doesn't have programs info.
 
-[Back to Readme](../Readme.md#how-is-the-app-using-the-configuration-files)
+[Back to Readme](../README.md#configuration)
