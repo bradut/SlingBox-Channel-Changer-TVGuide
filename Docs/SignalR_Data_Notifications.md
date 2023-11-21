@@ -17,7 +17,7 @@ In the example above, the URL of the web page is `http://192.168.1.10/TvGuideWeb
 
 Once these two parameters are passed to the web page, the app will be able to change the channels in the SlingBox(es).<br />
 It will do this by establishing a SignalR connection with the SlingBox Server Wrapper
-- to get information about the SlingBoxes activity (status): (`streaming in progress,` `channel changed`, `streaming stopped`, `slingBox bricked`)
+- to get information about the SlingBoxes activity (status): (`streaming in progress,` `channel changed`, `streaming stopped`, `slingBox bricked`, `remote locked`)
 - to send send channel change commands to the SlingBox Server Wrapper. This will further send them to the Slinger Server by using the URL received via the `slingServerUrl` parameter.<br />
 
 
