@@ -215,7 +215,7 @@ When the user clicks on a channel number, the web page will send a channel chang
    When the website is located on the Internet, make sure that the SlingBox server can be accessed via an IPV4 address or a DNS.<br />
 
 2. Configure the app by modifying the files in the `config\` sub-directory.<br />
-   See more details above in the [Configuration](#how-is-the-app-using-the-configuration-files) paragraph.
+   See more details above in the [Configuration](#configuration) paragraph.
 
 3. Configure the Slinger Server Wrapper.<br />
    See more details in its GitHub repo [Slinger Server Wrapper](#).
