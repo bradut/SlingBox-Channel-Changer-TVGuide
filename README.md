@@ -6,10 +6,11 @@ It can work as a TV Guide, as a channel changer or as both, integrated with the 
 
 <div style="text-align: center;">
 <img src="Docs\images\demo_mobile_mic_02.gif" alt="TvGuide integrated with Slinger Player for Android" height="450px"/>
-&nbsp;&nbsp;&nbsp;     
-<img src="Docs\images\demo_desktop_mic_021.gif" alt="TvGuide integrated with Slinger Player for Windows" height="450px"/>
-&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
 <img src="Docs\images\demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450px"/>
+&nbsp;&nbsp;&nbsp;  
+<img src="Docs\images\demo_desktop_mic_021.gif" alt="TvGuide integrated with Slinger Player for Windows" height="450px"/>
+
 
 TvGuide integrated with Slinger Player for Android and for Windows, as well as standalone (for TVs)<br />
 </div>
@@ -55,7 +56,7 @@ These three components (TvGuide Web App, TvGuide Data Source and the SlingBox Se
 can be located in the same machine or in different machines: in the same network or across the Internet.
 
 <p style="text-align: center;">
-<img src="docs\images\Diagram - TvGuideWebPage - only.jpg" alt="TvGuide Overview" height="300px">
+<img src="./Docs/images/Diagram - TvGuideWebPage - only.jpg" alt="TvGuide Overview" height="229">
 <br />System Architecture - TvGuide Web App, TvGuide Data Source and SlingBox Server
 </p>
 
@@ -100,7 +101,7 @@ In the example above where the environment is `mockdata_1_slings`, the webpage
 will read the default settings in the file `config\appsettings.json`,
 and then the the URLs to the data source from file `config\appsettings.mockdata_1_slings.json`.<br />
 
-(See the explanations in the [Configuration](Docs\Configuration.md) file.)
+(See the explanations in the [Configuration](./Docs/Configuration.md) file.)
 
 The app comes pre-loaded with a few mock data sources that can be used for testing purposes or instead of a real data source.<br />
 - mockdata_0_slings: 0 SlingBoxes, 6 channels, 3 programs
@@ -115,7 +116,7 @@ to match the names of your SlingBoxes declared in the Slinger project on your co
 (The SlingBox names in the config.ini can be different from the names of the SlingBox devices).<br />
 
 <p style="text-align: center;">
-<img src="docs\images\demo_mobile_telus.jpeg" alt="static data" height=500px><br>
+<img src="./Docs/images/demo_mobile_telus.jpeg" alt="static data" height=500><br>
 Using static data to enable channel changing (no program info available)
 </p>
 
@@ -123,11 +124,11 @@ Therefore, by using mock data instead of a real-time data source, you can still
 use the app as a channel changer.
 
 
-See more details in the [Configuration](Docs\Configuration.md) file.
+See more details in the [Configuration](./Docs/Configuration.md) file.
 
 Note: when changing the configuration files, you need to restart the app from the menu in order to apply the changes:<br /> 
 <p style="text-align: center;">
-<img src="docs\images\refresh_page.jpg" alt="refreshing the page" height=300px><br/>
+<img src="./Docs/images/refresh_page.jpg" alt="refreshing the page" height=300><br/>
 Refresh the page to apply the changes
 
 </p>
@@ -156,7 +157,7 @@ The TV Guide data source must provide the following information:
   The date-time of the TV programs corresponds to the local time of the TV Station.<br />
   The app will adjust the date-time of the TV programs to the local time of the device which browses the TV Guide.<br />
 
-See more details in the [DataSource](Docs\DataSource.md) file.
+See more details in the [DataSource](./Docs/DataSource.md) file.
 
 <br />
 
@@ -187,7 +188,7 @@ To use the app as a channel changer, its URL needs two additional parameters:
   - a **SignalR** connection to the web page of the TvGuide app, which notifies the web page  
 about changes in SlingBoxes' status.<br />
 
-See more details in the [SignalR_Data_Notifications](Docs\SignalR_Data_Notifications.md) file.
+See more details in the [SignalR_Data_Notifications](./Docs/SignalR_Data_Notifications.md) file.
 
 Reminder: You need to ensure **exact match** between the slingBox name in the data source and the slingBox name in the Slinger Server.<br />
 <br />  
@@ -235,7 +236,7 @@ BTW: I am not a JavaScript developer, so I am open to suggestions on how to impr
 This is a personal project, and I don't have a lot of time to work on it.<br />
 
 # License
-This project is licensed under the MIT License - see the [LICENSE](Docs\License.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](./Docs/License.md) file for details
 
 # Credits
 - [SlingBox by Sling Media](https://en.wikipedia.org/wiki/Slingbox) - the device that streams TV channels over the Internet
