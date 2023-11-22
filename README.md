@@ -32,8 +32,11 @@ TvGuide integrated with Slinger Player for Android and for Windows
 This app offers a convenient way to view programs info and select channels on your SlingBox&trade; devices.<br />
 Such functionality, also referred as [interactive electronic program guide (IPG)](https://en.wikipedia.org/wiki/Electronic_program_guide) 
 was originally provided by the SlingPlayer&trade; app (only for digital channels in USA and Canada) but the [service has been discontinued](https://www.slingbox.com/) as of 9 Nov.2022.<br />
-Currently the most complete and robust solution to use SlingBoxes is the [open source project Slinger Server](https://github.com/GerryDazoo/Slinger/tree/main/CustomRemotes) 
-which offers full control over SlingBoxes and provides complex remote controls.<br />
+
+It started as a TV Guide in 2020, and then, in 2023, it was extended to include the channel changer functionality.<br />
+
+The channel changer functionality is possible due to Gerry Dazoo's [open source project Slinger Server](https://github.com/GerryDazoo/Slinger/tree/main/CustomRemotes) which currently 
+is the most complete and robust solution to use SlingBoxes, and provides complex remote controls.<br />
 Therefore this app is not meant to replace but to complement these remote controls with [IPG](https://en.wikipedia.org/wiki/Electronic_program_guide) capability.<br />
 
 
@@ -66,7 +69,7 @@ As a **channel changer**, the data source can be:
 - a WebAPI service with channels and programs data,
 - static JSON files with channels data and (empty) programs data.
 
-It must have access my [Slinger Server Wrapper](#) which, in turn, talks to Gerry Dazoo's [Slinger Server](https://github.com/GerryDazoo/Slinger)
+It must have access my [Slinger Server Wrapper](#) which, in turn, talks to Slinger Server
 which controls the SlingBoxes.<br />
 It may be integrated with the [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) app 
 that is used to display the video stream.<br />
@@ -211,7 +214,7 @@ When the user clicks on a channel number, the web page will send a channel chang
    See more details above in the [Configuration](#configuration) paragraph.
 
 3. Configure the Slinger Server Wrapper.<br />
-   See more details in its GitHub repo [Slinger Server Wrapper](#).
+   See more details in its GitHub repo Slinger Server Wrapper.
 
 4. Launch the app: 
    - directly in a browser by using its URL.<br />
