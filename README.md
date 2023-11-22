@@ -22,6 +22,7 @@ TvGuide integrated with Slinger Player for Android and for Windows
    * [TV Guide functionality](#tv-guide-functionality)
    * [SlingBox channel changer functionality](#slingbox-channel-changer-functionality)
 - [Getting Started](#getting-started)
+- [Obtaining TV Guide data](#obtaining-tv-guide-data)
 - [Contributing](#contributing)
 - [License](#license)
 - [Credits](#credits)
@@ -219,6 +220,37 @@ When the user clicks on a channel number, the web page will send a channel chang
 4. Launch the app: 
    - directly in a browser by using its URL.<br />
    - from a Slinger Player app, after its modifying remote control web page to reference the URL of the app.<br />
+
+
+
+# Obtaining TV Guide data
+Without a TV data source, the app isn't as enjoyable to use.<br />
+
+There are mainly two options to obtain TV data:
+- Using a WebAPI service that provides TV data
+- Scraping TV providers' websites
+
+## Using a WebAPI service that provides TV data
+Issue: Only a very few free TV data sources are available.<br />
+One option is [TVmaze](https://www.tvmaze.com/api), but you will need to adapt its data format to match this app.<br />
+Keep in mind that some paid APIs can be [expensive](https://developer.tvmedia.ca/pricing-plans) for home users.<br />
+
+## Scraping a TV data website
+Issue: Most, if not all, TV data websites explicitly forbid scraping.<br />
+For example, SlingPlayer used TV Guide data from [Zap2it](https://tvlistings.zap2it.com/), which, 
+until a few years ago, provided an API but currently [forbids scraping](https://feedback.zap2it.com/terms-of-use/).
+
+However, there are some TV data websites that don't _seem_ to forbid scraping, such as [TV Passport](https://www.tvpassport.com/tv-listings)
+## Tv Guide data format
+The TV Guide data source adheres to an open-source, community-driven standard known as
+[XMLTV](https://wiki.xmltv.org/index.php/XMLTVFormat), widely utilized by various tools and **scrapers**.<br />
+
+According to the XMLTV website:
+>_An XMLTV file has 2 types of records:<br />
+&bull; 'channel' records, store information about channels<br />
+&bull; 'program' records, store information about individual episodes_
+
+Likewise, this app's TV Guide incorporates the same two types of records. Therefore, XMLTV may be adapted to this app.<br />
 
 
 # Contributing
