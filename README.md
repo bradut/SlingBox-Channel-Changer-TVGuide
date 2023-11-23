@@ -261,7 +261,7 @@ If you want to contribute, please contact me first to discuss the changes.<br />
 I prefer to keep this code as simple as possible, JavaScript only (no transpilers - React, Angular, etc.)
 so that it can be easily understood and modified.<br />
 
-BTW: I am not a JavaScript developer, so I am open to suggestions on how to improve the code.<br />
+BTW: **I am not a JavaScript developer**, so I am open to suggestions on how to improve the code.<br />
 
 This is a personal project, and I don't have a lot of time to work on it.<br />
 
