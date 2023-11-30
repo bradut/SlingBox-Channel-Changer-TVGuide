@@ -115,8 +115,8 @@ to match the names of your SlingBoxes declared in the Slinger project on your co
 (The SlingBox names in the config.ini can be different from the names of the SlingBox devices).<br />
 
 <p align="center">
-<img src="./Docs/images/demo_mobile_telus.jpeg" alt="static data" height=500><br>
-Using static data to enable channel changing (no program info available)
+<img src="./Docs/images/demo_desktop_digital_full-1.gif" alt="static data" height=500><br>
+Using static data to enable channel changing (channels are hard-coded)
 </p>
 
 Therefore, by using mock data instead of a real-time data source, you can still 
@@ -284,6 +284,7 @@ or satellite television.<br />
 
 
 - [CloudConvert](https://cloudconvert.com/mp4-to-gif) - used to create animated GIFs from videos.
+- [Online video cutter](https://online-video-cutter.com/crop-video) - used to crop videos
 - [Draw.io](https://app.diagrams.net/) - used to create diagrams
 
 # Disclaimer

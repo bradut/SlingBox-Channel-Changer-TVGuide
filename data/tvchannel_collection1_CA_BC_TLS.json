@@ -119,6 +119,32 @@
       "channelType": "news"
     },
     {
+      "id": "stingray_country_classic",
+      "logo": "stingray.png",
+      "name": "Stingray Country Classic",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "7501",
+          "quality": "true"
+        }
+      ],
+      "channelType": "music"
+    },
+    {
+      "id": "stingray_pop_adult",
+      "logo": "stingray.png",
+      "name": "Stingray Pop Adult",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "7506",
+          "quality": "true"
+        }
+      ],
+      "channelType": "music"
+    },
+    {
       "id": "stingray_baroque",
       "logo": "stingray.png",
       "name": "Stingray Baroque",
