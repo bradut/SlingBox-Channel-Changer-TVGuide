@@ -119,6 +119,19 @@
       "channelType": "news"
     },
     {
+      "id": "global-news_bc1",
+      "logo": "global_bc_1.png",
+      "name": "Global News BC 1",
+      "attributes": [
+        {
+          "slingName": "bradut",
+          "number": "845",
+          "quality": "true"
+        }
+      ],
+      "channelType": "news"
+    },
+    {
       "id": "stingray_country_classic",
       "logo": "stingray.png",
       "name": "Stingray Country Classic",
