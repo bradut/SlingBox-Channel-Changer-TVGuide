@@ -1,4 +1,4 @@
-﻿# TvGuide and SlingBox Channel Changer #
+﻿# SlingBox Channel-Changer TvGuide #
 
 Web app with a TV Guide and means to change the channels in your SlingBox&trade; devices.
 
