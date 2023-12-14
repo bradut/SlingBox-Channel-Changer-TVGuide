@@ -3312,8 +3312,8 @@ ${resolutionMsg} refresh the page or check if the server is working and properly
     static set cachedStreamingStatus(jsonData) {
         const serializedSlingBoxesStatus = JSON.stringify(jsonData);
         if (serializedSlingBoxesStatus.toString().indexOf("slingBoxes") < 0) {
-            const errMsg = "invalid streamig status json data: " + serializedSlingBoxesStatus
-            alert(errMsg);
+            const errMsg = "'set cachedStreamingStatus():' invalid streamig status json data: " + serializedSlingBoxesStatus
+            //alert(errMsg);
             console.error(errMsg);
         }
 
