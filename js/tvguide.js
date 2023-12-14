@@ -3313,22 +3313,20 @@ ${resolutionMsg} refresh the page or check if the server is working and properly
         const serializedSlingBoxesStatus = JSON.stringify(jsonData);
         if (serializedSlingBoxesStatus.toString().indexOf("slingBoxes") < 0) {
             const errMsg = "'set cachedStreamingStatus():' invalid streamig status json data: " + serializedSlingBoxesStatus
-            //alert(errMsg);
             console.error(errMsg);
         }
 
-        // Bug: the callBack function never calles when cache expires
+        // Bug: the callBack function never calls when cache expires
         const expirationTimeMs = Configuration.slingCacheSettings.slingStatusExpirationTimeMs;
         this.#cache.set(
             this.streamingStatusCache_key,
             serializedSlingBoxesStatus,
             expirationTimeMs,
-            null, //setInterval(SlingServices.checkCanDisableChannelButtons, Configuration.webPageRefreshRates.checkCanDisableChannelButtonsTimeOutMs), // call back function to trigger upon expiration
+            null, //setInterval(SlingServices.checkCanDisableChannelButtons, Configuration.webPageRefreshRates.checkCanDisableChannelButtonsTimeOutMs), // the call back function to trigger upon expiration
             null);
     }
 
 
-    // Hack
     static maxResetCounter = 10;
     static resetDisplayButtonCounter = this.maxResetCounter;
 
