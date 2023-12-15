@@ -81,6 +81,11 @@ usually when being used as a remote control for Smart TVs which stream from Slin
 <img src="./Docs/images/demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450"/><br />
 TV Guide and channel changer used as a standalone webpage for remote controlling Smart TVs
 </p>
+
+<p align="center">
+<img src="./Docs/images/demo_tv_remote.gif" alt="TvGuide used as a remote control for TVs" height="500"/><br />
+Utilizing QR Codes: Extracting TV Guide URL for Seamless Remote Control of Smart TVs with VLC Player
+</p>
 <br />
 <br />
 
