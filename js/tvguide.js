@@ -2500,8 +2500,10 @@ class SlingServices {
             if (!success) {
                 const responseText = httpRequest.responseText;
                 const errMsg = "Error" + " " + responseText + " when sending " + urlEncodedData + "to " + url;
-                alert(responseText);
                 console.error(errMsg);
+                
+                const displayErrMsg = "Error " +slingboxName + " ch: " + channelNumber;    
+                HtmlServices.displayMessage(displayErrMsg, HtmlServices.messageTypeError); //alert(responseText);                
             }
 
             this.highlightSelectedChannelButton(slingboxName, channelNumber, success);
