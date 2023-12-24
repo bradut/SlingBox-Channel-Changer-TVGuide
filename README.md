@@ -70,12 +70,13 @@ As a **channel changer**, the data source can be:
 - a WebAPI service with channels and programs data,
 - static JSON files with channels data and (empty) programs data.
 
-It must have access my [Slinger Server Wrapper](#) which, in turn, talks to Slinger Server
+In order to work:
+ - It must have access my [Slinger Server Wrapper](https://github.com/bradut/SlingBox-Channel-Changer-Server) which, in turn, talks to Slinger Server
 which controls the SlingBoxes.<br />
-It may be integrated with the [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) app 
+- It can be integrated with the [Slinger Player](https://github.com/GerryDazoo/SlingerPlayer) app 
 that is used to display the video stream.<br />
-Besides Slinger Player, the app can be launched independently in a browser, 
-usually when being used as a remote control for Smart TVs which stream from SlingBoxes via [VLC](https://www.videolan.org/).<br />
+- It can be launched independently of Slinger Player, directly in a browser, 
+usually when being used as a remote control for Smart TVs which stream from SlingBoxes via [VLC](https://www.videolan.org/). (Please see the images below)<br />
 
 <p align="center">
 <img src="./Docs/images/demo_mobile_solo_mic_600.gif" alt="TvGuide used as a remote control for TVs" height="450"/><br />
