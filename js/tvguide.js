@@ -20,7 +20,9 @@
 class Configuration {
 
     // Version can be displayed in UI
-    static tvGuideVersion = "1.0.0";
+    static tvGuideVersion = "2024.01.02"; 
+    // "2024.01.02"; // change versioning system and add api version to slingServerStreamingStatusUrl
+    //"1.0.0";
 
     static #isConfigurationLoaded = false;
     static get isConfigurationLoaded() {
@@ -398,13 +400,15 @@ class Configuration {
      *  SlingBox Server settings
      * ********************************************************************************************/
 
-    // Slingbox_Server & RemoteControlService URLs = passed via the querystring
+    // Slingbox_Server & RemoteControlService URLs are being passed via the querystring
     static setSlingBoxApiEndpointsFromQueryString() {
         if (Utils.isNullOrUndefined(Configuration.slingApiUrls.slingServerUrl)) {
             Configuration.slingApiUrls.slingServerUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingServerUrl"));
             Configuration.slingApiUrls.slingRemoteControlUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlUrl"));
             Configuration.slingApiUrls.slingServerSignalRHubUrl = HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl) + "/auctionhub";
-            Configuration.slingApiUrls.slingServerStreamingStatusUrl = HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl) + "/api/streamingstatus";
+            
+            // ToDO: send this endpoint via the querystring, to avoid hardcoding it here.
+            Configuration.slingApiUrls.slingServerStreamingStatusUrl = HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl) + "/api/v1/streamingstatus";
         }
     }
 
