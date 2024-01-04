@@ -20,7 +20,7 @@
 class Configuration {
 
     // Version can be displayed in UI
-    static tvGuideVersion = "2024.01.02"; 
+    static tvGuideVersion = "24.01.02";
     // "2024.01.02"; // change versioning system and add api version to slingServerStreamingStatusUrl
     //"1.0.0";
 
@@ -41,8 +41,6 @@ class Configuration {
 
             if (Configuration.debug) console.log(`${TimeService.timeStamp} Configuration.setUp(): Completed`);
         });
-
-
     }
 
 
@@ -400,15 +398,18 @@ class Configuration {
      *  SlingBox Server settings
      * ********************************************************************************************/
 
-    // Slingbox_Server & RemoteControlService URLs are being passed via the querystring
+    // Slingbox_Server & RemoteControlService URLs are being passed via the query-string params: 
+    // slingServerUrl, slingRemoteControlUrl, slingRemoteControlStatusUri
     static setSlingBoxApiEndpointsFromQueryString() {
         if (Utils.isNullOrUndefined(Configuration.slingApiUrls.slingServerUrl)) {
             Configuration.slingApiUrls.slingServerUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingServerUrl"));
             Configuration.slingApiUrls.slingRemoteControlUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlUrl"));
             Configuration.slingApiUrls.slingServerSignalRHubUrl = HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl) + "/auctionhub";
+
+            Configuration.slingApiUrls.slingServerStreamingStatus_Uri = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlStatusUri"));
             
-            // ToDO: send this endpoint via the querystring, to avoid hardcoding it here.
-            Configuration.slingApiUrls.slingServerStreamingStatusUrl = HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl) + "/api/v1/streamingstatus";
+            Configuration.slingApiUrls.slingServerStreamingStatusUrl = HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl)
+                + Configuration.slingApiUrls.slingServerStreamingStatus_Uri; //"/api/v1/streamingstatus";
         }
     }
 
@@ -417,6 +418,16 @@ class Configuration {
         static slingRemoteControlUrl = "";
         static slingServerSignalRHubUrl = "";
         static slingServerStreamingStatusUrl = "";
+
+        static #slingServerStreamingStatusUri = "";
+        static set slingServerStreamingStatus_Uri(uri) {
+            this.#slingServerStreamingStatusUri = uri;
+        }
+        static get slingServerStreamingStatus_Uri() {
+            return this.#slingServerStreamingStatusUri ?
+                this.#slingServerStreamingStatusUri :
+                "/api/v1/streamingstatus";
+        }
     }
 
     static get isPageLaunchedFromSlingBoxServer() {
@@ -2505,8 +2516,8 @@ class SlingServices {
                 const responseText = httpRequest.responseText;
                 const errMsg = "Error" + " " + responseText + " when sending " + urlEncodedData + "to " + url;
                 console.error(errMsg);
-                
-                const displayErrMsg = "Error " +slingboxName + " ch: " + channelNumber;    
+
+                const displayErrMsg = "Error " + slingboxName + " ch: " + channelNumber;
                 HtmlServices.displayMessage(displayErrMsg, HtmlServices.messageTypeError); //alert(responseText);                
             }
 
