@@ -20,9 +20,10 @@
 class Configuration {
 
     // Version can be displayed in UI
-    static tvGuideVersion = "24.01.02";
+    static tvGuideVersion = "24.01.04";
+    // "24.01.04"; // add 'slingRemoteControlStatusPath' to query-string params
     // "2024.01.02"; // change versioning system and add api version to slingServerStreamingStatusUrl
-    //"1.0.0";
+    // "1.0.0";
 
     static #isConfigurationLoaded = false;
     static get isConfigurationLoaded() {
@@ -399,35 +400,41 @@ class Configuration {
      * ********************************************************************************************/
 
     // Slingbox_Server & RemoteControlService URLs are being passed via the query-string params: 
-    // slingServerUrl, slingRemoteControlUrl, slingRemoteControlStatusUri
-    static setSlingBoxApiEndpointsFromQueryString() {
-        if (Utils.isNullOrUndefined(Configuration.slingApiUrls.slingServerUrl)) {
-            Configuration.slingApiUrls.slingServerUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingServerUrl"));
-            Configuration.slingApiUrls.slingRemoteControlUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlUrl"));
-            Configuration.slingApiUrls.slingServerSignalRHubUrl = HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl) + "/auctionhub";
-
-            Configuration.slingApiUrls.slingServerStreamingStatus_Uri = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlStatusUri"));
-            
-            Configuration.slingApiUrls.slingServerStreamingStatusUrl = HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl)
-                + Configuration.slingApiUrls.slingServerStreamingStatus_Uri; //"/api/v1/streamingstatus";
+      static setSlingBoxApiEndpointsFromQueryString() {
+        if (!Utils.isNullOrUndefined(Configuration.slingApiUrls.slingServerUrl)) {
+            return;
         }
-    }
+        
+        Configuration.slingApiUrls.slingServerUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingServerUrl"));
+        Configuration.slingApiUrls.slingRemoteControlUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlUrl"));
+        Configuration.slingApiUrls.slingRemoteControlStatusPath = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlStatusPath"));
+      }
 
     static slingApiUrls = class SlingApiEndPoints {
         static slingServerUrl = "";
         static slingRemoteControlUrl = "";
-        static slingServerSignalRHubUrl = "";
-        static slingServerStreamingStatusUrl = "";
-
+        
         static #slingServerStreamingStatusUri = "";
-        static set slingServerStreamingStatus_Uri(uri) {
+        static set slingRemoteControlStatusPath(uri) {
             this.#slingServerStreamingStatusUri = uri;
         }
-        static get slingServerStreamingStatus_Uri() {
+        static get slingRemoteControlStatusPath() {
             return this.#slingServerStreamingStatusUri ?
                 this.#slingServerStreamingStatusUri :
                 "/api/v1/streamingstatus";
         }
+
+
+        static get slingServerSignalRHubUrl(){
+            return HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl) 
+                + "/auctionhub";
+        };
+        
+        static get slingServerStreamingStatusUrl() {
+            return HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl)
+                + Configuration.slingApiUrls.slingRemoteControlStatusPath;
+        };
+        
     }
 
     static get isPageLaunchedFromSlingBoxServer() {
