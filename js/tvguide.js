@@ -20,12 +20,13 @@
 class Configuration {
 
     // Version can be displayed in UI
-    static tvGuideVersion = "24.01.04";
-    // "24.01.04"; // add 'slingRemoteControlStatusPath' to query-string params
-    // "2024.01.02"; // change versioning system and add api version to slingServerStreamingStatusUrl
-    // "1.0.0";
+    static tvGuideVersion =  "4.02.16";
+        // "4.02.16"; // fix bug: trying to establish SignalR connection when the server is not available
+        // "24.01.04"; // add 'slingRemoteControlStatusPath' to query-string params
+        // "2024.01.02"; // change versioning system and add api version to slingServerStreamingStatusUrl
+        // "1.0.0";
 
-    static #isConfigurationLoaded = false;
+        static #isConfigurationLoaded = false;
     static get isConfigurationLoaded() {
         return this.#isConfigurationLoaded;
     }
@@ -400,24 +401,26 @@ class Configuration {
      * ********************************************************************************************/
 
     // Slingbox_Server & RemoteControlService URLs are being passed via the query-string params: 
-      static setSlingBoxApiEndpointsFromQueryString() {
+    static setSlingBoxApiEndpointsFromQueryString() {
         if (!Utils.isNullOrUndefined(Configuration.slingApiUrls.slingServerUrl)) {
             return;
         }
-        
+
         Configuration.slingApiUrls.slingServerUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingServerUrl"));
         Configuration.slingApiUrls.slingRemoteControlUrl = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlUrl"));
         Configuration.slingApiUrls.slingRemoteControlStatusPath = decodeURIComponent(HtmlUtils.getQueryParameterByKey("slingRemoteControlStatusPath"));
-      }
+    }
 
     static slingApiUrls = class SlingApiEndPoints {
         static slingServerUrl = "";
         static slingRemoteControlUrl = "";
-        
+
         static #slingServerStreamingStatusUri = "";
+
         static set slingRemoteControlStatusPath(uri) {
             this.#slingServerStreamingStatusUri = uri;
         }
+
         static get slingRemoteControlStatusPath() {
             return this.#slingServerStreamingStatusUri ?
                 this.#slingServerStreamingStatusUri :
@@ -425,16 +428,16 @@ class Configuration {
         }
 
 
-        static get slingServerSignalRHubUrl(){
-            return HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl) 
+        static get slingServerSignalRHubUrl() {
+            return HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl)
                 + "/auctionhub";
         };
-        
+
         static get slingServerStreamingStatusUrl() {
             return HtmlUtils.getBaseUrl(Configuration.slingApiUrls.slingRemoteControlUrl)
                 + Configuration.slingApiUrls.slingRemoteControlStatusPath;
         };
-        
+
     }
 
     static get isPageLaunchedFromSlingBoxServer() {
@@ -474,6 +477,10 @@ class Configuration {
             const slingBoxName = uiAttribute["slingName"];
             this.#addSlingBoxName(slingBoxName);
         });
+    }
+
+    static isAnySlingBoxConnected() {
+        return !Utils.isNullOrUndefined(this.slingApiUrls.slingServerUrl);
     }
 }
 
@@ -3367,6 +3374,12 @@ ${resolutionMsg} refresh the page or check if the server is working and properly
     // This function is a Hack to workaround to reset the buttons when there are no slingboxes connected
     // *****************************************************************
     static checkCanDisableChannelButtonsHack() {
+
+        if (!Configuration.isAnySlingBoxConnected()) {
+            if (Configuration.debug) console.log(`${TimeService.timeStamp} checkCanDisableChannelNumbersButtons() - SlingBox server is not configured or not connected.`);
+            return;
+        }
+
         if (Configuration.debug) console.log(`${TimeService.timeStamp} checkCanDisableChannelNumbersButtons() - Hack to detect if the server stopped streaming`);
 
         const slingBoxesNames = SlingServices.#getAllSlingBoxesNamesWithDisplayedButtons();

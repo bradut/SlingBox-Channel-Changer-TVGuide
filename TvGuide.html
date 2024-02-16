@@ -106,7 +106,8 @@
 
         <div style="margin-top: 5px">
             <span style="font-weight:bold;">Source Code:</span>
-            <span style="margin-left:5px"><a href="https://github.com/bradut/SlingBox-TVGuide" target="_blank">GitHub</a></span>
+            <span style="margin-left:5px"><a href="https://github.com/bradut/SlingBox-TVGuide"
+                                             target="_blank">GitHub</a></span>
         </div>
         <hr class="menu-divider">
 
@@ -210,9 +211,15 @@
     let signalRConnection = null;
     let observableConnection = new ObservableSignalRConnection(signalRConnection);
 
-    observableConnection.subscribe(handleSignalRConnectionChange);
 
-    initializeSignalRConnection();
+    // 2024-02-16
+    if (Configuration.isAnySlingBoxConnected()) {
+        observableConnection.subscribe(handleSignalRConnectionChange);
+
+        console.log(`${TimeService.timeStamp} SlingBox server is configured. Initializing SignalR connection.`);
+        initializeSignalRConnection();
+    }
+
 
     const loadPageRefreshTimeOutMs = Configuration.webPageRefreshRates.loadPageTimeOutMs;
     const checkSignalRConnectionTimeoutMs = Configuration.webPageRefreshRates.checkSignalRConnectionTimeoutMs;
@@ -241,7 +248,6 @@
         if (observableConnection.oldValue === null) {
             console.log(`${TimeService.timeStamp} SignalR Connection status: connected`);
             observableConnection.updateOldWithNewValue()
-
             SlingServices.displayDivChannelNumbersAsButtonsAsync();
             reduceSignalRRefreshRate();
             SlingServices.resetSignalRErrorCount();
@@ -373,6 +379,12 @@
             console.log(`${TimeService.timeStamp} Configuration is not loaded yet. initializeSignalRConnection() aborted.`);
             return;
         }
+
+        if (!Configuration.isAnySlingBoxConnected()) {
+            if (Configuration.debug) console.log(`${TimeService.timeStamp} initializeSignalRConnection() - SlingBox server is not configured or not connected.`);
+            return;
+        }
+
 
         if (!Configuration.isPageLaunchedFromSlingBoxServer) {
             console.error(`${TimeService.timeStamp} Page is not launched from SlingBox Server. SignalR connection not initialized.`)
