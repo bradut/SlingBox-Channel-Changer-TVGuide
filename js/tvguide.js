@@ -20,13 +20,14 @@
 class Configuration {
 
     // Version can be displayed in UI
-    static tvGuideVersion =  "4.02.16";
-        // "4.02.16"; // fix bug: trying to establish SignalR connection when the server is not available
-        // "24.01.04"; // add 'slingRemoteControlStatusPath' to query-string params
-        // "2024.01.02"; // change versioning system and add api version to slingServerStreamingStatusUrl
-        // "1.0.0";
+    static tvGuideVersion = "4.02.16";
+    // "4.02.16"; // fix bug: was trying to establish SignalR connection when the server is not available
+    // "24.01.04"; // add 'slingRemoteControlStatusPath' to query-string params
+    // "2024.01.02"; // change versioning system and add api version to slingServerStreamingStatusUrl
+    // "1.0.0";
 
-        static #isConfigurationLoaded = false;
+
+    static #isConfigurationLoaded = false;
     static get isConfigurationLoaded() {
         return this.#isConfigurationLoaded;
     }

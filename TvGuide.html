@@ -300,7 +300,6 @@
         Configuration.setUp().then(() => {
             if (Configuration.debug) console.log(`${TimeService.timeStamp} Configuration.setUp(): Completed in page`);
             populatePageTitle();
-            //loadPage();
         }).catch((error) => {
             console.error(`${TimeService.timeStamp} Configuration.setUp() failed,
         error: ${error}`);
