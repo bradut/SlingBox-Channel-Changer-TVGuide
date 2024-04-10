@@ -194,7 +194,7 @@
     }
 
 
-    // This is the FASTEST: it displays the modified buttons before the TV programs finish loading
+    // This is the FASTEST: display the selected buttons before the TV programs finish loading
     window.onload = function () {
         // Queue the function for the next available frame
         requestAnimationFrame(doAfterWindowLoads);
@@ -302,7 +302,7 @@
             populatePageTitle();
         }).catch((error) => {
             console.error(`${TimeService.timeStamp} Configuration.setUp() failed,
-        error: ${error}`);
+            error: ${error}`);
         });
     }
 
@@ -349,7 +349,6 @@
             .catch(function (err) {
                 console.error(`${TimeService.timeStamp} Could not read template file: ${templateNameUrl}`, err);
             });
-
     }
 
     function doAfterWindowLoads() {
@@ -360,6 +359,9 @@
         requestAnimationFrame(async function () {
             loadConfiguration();
             HtmlServices.displayMessage("Version: " + Configuration.tvGuideVersion);
+
+            // Hack: get server status before SignalR connection is established - 2024-04-10
+            await SlingServices.displayDivChannelNumbersAsButtonsAsync();
         });
     }
 
