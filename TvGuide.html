@@ -194,7 +194,7 @@
     }
 
 
-    // This is the FASTEST: display the selected buttons before the TV programs finish loading
+    // This is the FASTEST method: display the selected buttons before the TV programs finish loading
     window.onload = function () {
         // Queue the function for the next available frame
         requestAnimationFrame(doAfterWindowLoads);
@@ -211,15 +211,15 @@
     let signalRConnection = null;
     let observableConnection = new ObservableSignalRConnection(signalRConnection);
 
+    // avoid multiple subscriptions
+    let isHandleSignalRConnectionChangeSubscribed = false;
 
-    // 2024-02-16
-    if (Configuration.isAnySlingBoxConnected()) {
-        observableConnection.subscribe(handleSignalRConnectionChange);
-
-        console.log(`${TimeService.timeStamp} SlingBox server is configured. Initializing SignalR connection.`);
-        initializeSignalRConnection();
+    // temporarily pull server status until SignalR connection is established
+    let pullServerStatusIntervalId = null;
+    //  ensure that the pullServerStatusIntervalId interval is not reassigned a new value after the SignalR connection is established
+    if (!isSignalRConnectionConnected(observableConnection.value)) {
+        pullServerStatusIntervalId = setInterval(SlingServices.displayDivChannelNumbersAsButtonsAsync, 5000);
     }
-
 
     const loadPageRefreshTimeOutMs = Configuration.webPageRefreshRates.loadPageTimeOutMs;
     const checkSignalRConnectionTimeoutMs = Configuration.webPageRefreshRates.checkSignalRConnectionTimeoutMs;
@@ -248,7 +248,12 @@
         if (observableConnection.oldValue === null) {
             console.log(`${TimeService.timeStamp} SignalR Connection status: connected`);
             observableConnection.updateOldWithNewValue()
+
+            // force on more time the display of the channel numbers, the stop it
             SlingServices.displayDivChannelNumbersAsButtonsAsync();
+            clearInterval(pullServerStatusIntervalId);
+            console.log(`${TimeService.timeStamp} pulling ServerStatus: stopped`);
+
             reduceSignalRRefreshRate();
             SlingServices.resetSignalRErrorCount();
         }
@@ -273,6 +278,16 @@
         if (!Configuration.isConfigurationLoaded) {
             console.info(`${TimeService.timeStamp} Configuration is not loaded yet. loadPage() aborted.`);
             return;
+        }
+
+        // 2024-04-10 //2024-02-16
+        if (isHandleSignalRConnectionChangeSubscribed === false && Configuration.isAnySlingBoxConnected()) {
+            observableConnection.subscribe(handleSignalRConnectionChange);
+
+            console.log(`${TimeService.timeStamp} SlingBox server is configured. Initializing SignalR connection.`);
+            initializeSignalRConnection();
+
+            isHandleSignalRConnectionChangeSubscribed = true;
         }
 
         const deviceDateTime = TimeService.getDeviceDateTime();
@@ -359,9 +374,6 @@
         requestAnimationFrame(async function () {
             loadConfiguration();
             HtmlServices.displayMessage("Version: " + Configuration.tvGuideVersion);
-
-            // Hack: get server status before SignalR connection is established - 2024-04-10
-            await SlingServices.displayDivChannelNumbersAsButtonsAsync();
         });
     }
 

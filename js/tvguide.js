@@ -20,7 +20,10 @@
 class Configuration {
 
     // Version can be displayed in UI
-    static tvGuideVersion = "4.02.16";
+    static tvGuideVersion = "4.04.10";
+    // "4.04.10"; // Fixed the delay in displaying selected buttons during the execution of the first page load, 
+    // when the SignalR connection was not yet established 
+    // + fix bug when SignalR connection change event was not registered (introduced in 4.02.16).
     // "4.02.16"; // fix bug: was trying to establish SignalR connection when the server is not available
     // "24.01.04"; // add 'slingRemoteControlStatusPath' to query-string params
     // "2024.01.02"; // change versioning system and add api version to slingServerStreamingStatusUrl
