@@ -44,11 +44,11 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/tvstyle.css?id=2021-11-19_2222">
 
-    <!--    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
     <script src="js/signalr/signalr.min.js"></script>
     <script src="js/jquery/jquery-3.5.1.min.js?id=2024-01-02_2222"></script>
 
-    <script src="js/tvguide.js?id=2024-01-02_2222"></script>
+    <script src="js/tvguide.js?id=2024-04-11_2222"></script>
 
     <style>
         #divPageTitle {
@@ -144,8 +144,8 @@
     * Useful for components that need to know when the server is connected or disconnected
     * *************************************************************************************/
     class ObservableSignalRConnection {
-        constructor(initialValue) {
-            this._value = initialValue;
+        constructor(initialSignalRConnection) {
+            this._value = initialSignalRConnection;
             this._listeners = [];
             this._oldValue = null;
         }
@@ -162,27 +162,27 @@
             this._oldValue = this._value;
         }
 
-        set value(newValue) {
-            if (this._value === newValue) {
+        set value(newSignalRConnection) {
+            if (this._value === newSignalRConnection) {
                 return;
             }
 
             // ignore "Connecting" state
-            if (!isSignalRConnectionConnected(newValue)) {
-                newValue = null;
+            if (!isSignalRConnectionConnected(newSignalRConnection)) {
+                newSignalRConnection = null;
             }
 
-            if (newValue instanceof signalR.HubConnection && this._oldValue instanceof signalR.HubConnection) {
-                if (newValue.state === this._value.state) {
+            if (newSignalRConnection instanceof signalR.HubConnection && this._oldValue instanceof signalR.HubConnection) {
+                if (newSignalRConnection.state === this._value.state) {
                     return;
                 }
             }
 
-            this._value = newValue;
+            this._value = newSignalRConnection;
 
             // notify all listeners
             try {
-                this._listeners.forEach(listener => listener(newValue));
+                this._listeners.forEach(listener => listener(newSignalRConnection));
             } catch (e) {
                 console.log(e);
             }
@@ -200,8 +200,6 @@
         requestAnimationFrame(doAfterWindowLoads);
     };
 
-    //loadConfiguration();
-
     let loadPageIntervalId = setInterval(loadPage, 5000);
     let signalRIntervalId = setInterval(initializeSignalRConnection, 5000);
 
@@ -214,16 +212,8 @@
     // avoid multiple subscriptions
     let isHandleSignalRConnectionChangeSubscribed = false;
 
-    // temporarily pull server status until SignalR connection is established
-    let pullServerStatusIntervalId = null;
-    //  ensure that the pullServerStatusIntervalId interval is not reassigned a new value after the SignalR connection is established
-    if (!isSignalRConnectionConnected(observableConnection.value)) {
-        pullServerStatusIntervalId = setInterval(SlingServices.displayDivChannelNumbersAsButtonsAsync, 5000);
-    }
-
     const loadPageRefreshTimeOutMs = Configuration.webPageRefreshRates.loadPageTimeOutMs;
     const checkSignalRConnectionTimeoutMs = Configuration.webPageRefreshRates.checkSignalRConnectionTimeoutMs;
-
 
     function isSignalRConnectionConnected(signalRConnection) {
         return !Utils.isNullOrUndefined(signalRConnection) &&
@@ -249,11 +239,7 @@
             console.log(`${TimeService.timeStamp} SignalR Connection status: connected`);
             observableConnection.updateOldWithNewValue()
 
-            // force on more time the display of the channel numbers, the stop it
             SlingServices.displayDivChannelNumbersAsButtonsAsync();
-            clearInterval(pullServerStatusIntervalId);
-            console.log(`${TimeService.timeStamp} pulling ServerStatus: stopped`);
-
             reduceSignalRRefreshRate();
             SlingServices.resetSignalRErrorCount();
         }
@@ -413,10 +399,8 @@
 
         if (isSignalRConnectionConnected(connection)) {
             observableConnection.value = connection;
-            //return connection;
         } else {
             observableConnection.value = null;
-            //return null;
         }
     }
 
