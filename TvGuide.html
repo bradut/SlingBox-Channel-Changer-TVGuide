@@ -266,8 +266,10 @@
             return;
         }
 
-        // 2024-04-10 //2024-02-16
         if (isHandleSignalRConnectionChangeSubscribed === false && Configuration.isAnySlingBoxConnected()) {
+            // By subscribing the handleSignalRConnectionChange function to the observableConnection,
+            // whenever the state of the observableConnection changes, the handleSignalRConnectionChange function
+            // will be called with the new state as its argument.
             observableConnection.subscribe(handleSignalRConnectionChange);
 
             console.log(`${TimeService.timeStamp} SlingBox server is configured. Initializing SignalR connection.`);
